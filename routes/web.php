@@ -1,7 +1,9 @@
 <?php
 
 use App\Http\Controllers\Admin\AuthController;
+use App\Http\Controllers\Admin\BrandController;
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\ColorController;
 use App\Http\Controllers\Admin\PageController;
 use Illuminate\Support\Facades\Route;
 
@@ -16,12 +18,14 @@ Route::group(
         'prefix' => 'admin',
     ], function () {
 
+    Route::get('/', [PageController::class, 'index']);
+
     // auth
     Route::post('/admin/logout', [AuthController::class, 'logout'])->name('admin.logout');
 
-    // page
-    Route::get('/', [PageController::class, 'index']);
 
     Route::resource('/categories', CategoryController::class);
+    Route::resource('/colorsfeta', ColorController::class);
+    Route::resource('/brands', BrandController::class);
 
 })->name('admin.');

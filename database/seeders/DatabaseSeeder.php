@@ -4,6 +4,9 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use App\Models\Admin;
+use App\Models\Brand;
+use App\Models\Category;
+use App\Models\Color;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 
@@ -29,12 +32,28 @@ class DatabaseSeeder extends Seeder
             'password' => \Hash::make('password')
         ]);
 
+        $categories = ['Phone', 'Desktop', 'Laptop'];
+        foreach ($categories as $category) {
+            Category::create([
+                'name' => $category,
+                'slug' => \Str::slug($category) . uniqid(),
+            ]);
+        }
+
+        $brands = ['Apple', 'Google', 'Acer', 'HP'];
+        foreach ($brands as $brand) {
+            Brand::create([
+                'name' => $brand,
+            ]);
+        }
+
+        $colors = ['Red', 'Green', 'Blue'];
+        foreach ($colors as $color) {
+            Color::create([
+                'name' => $color
+            ]);
+        }
 
         // \App\Models\User::factory(10)->create();
-
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
     }
 }
