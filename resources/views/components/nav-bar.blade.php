@@ -18,17 +18,15 @@
                 id="user-dropdown">
                 <div class="px-4 py-3">
                     {{--                     User name --}}
-                    @if(auth()->guard('admin')->hasUser())
-                        <span class="block text-sm text-gray-900 dark:text-white">
-                        {{ auth()->guard('admin')->user()->name }}
+                    <span class="block text-sm text-gray-900 dark:text-white">
+                        {{ auth()->guard('admin')->user()?->name ?? 'Guest'}}
                     </span>
-                        <span
-                            class="block text-sm font-medium text-gray-500 truncate dark:text-gray-400">
+                    <span
+                        class="block text-sm font-medium text-gray-500 truncate dark:text-gray-400">
 
-                        {{ auth()->guard('admin')->user()->email }}
+                        {{ auth()->guard('admin')->user()?->email ?? 'name@mail.com' }}
 
                     </span>
-                    @endif
                 </div>
                 <ul class="py-1" aria-labelledby="user-menu-button">
                     <li>
