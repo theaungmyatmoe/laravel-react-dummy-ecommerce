@@ -20,7 +20,11 @@ class ProductController extends Controller
      */
     public function index()
     {
-        return view('admin.product.index');
+        $products = Product::latest()
+            ->select('slug', 'name', 'image', 'price')
+            ->paginate(10);
+
+        return view('admin.product.index', compact('products'));
     }
 
     /**
@@ -129,6 +133,11 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
-        //
+        \File::delete(public_path('/images', $product->image));
+        $product->colors()->sync([]);
+        $product->delete();
+
+        return redirect()->route('products.index')->with('success', 'Product Deleted');
     }
+
 }
