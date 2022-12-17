@@ -19,6 +19,7 @@ Route::post('/admin/login', [AuthController::class, 'login'])->name('admin.login
 Route::group(
     [
         'prefix' => 'admin',
+        'middleware' => 'admin',
     ], function () {
 
     Route::get('/', [PageController::class, 'index']);
