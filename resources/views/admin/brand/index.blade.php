@@ -1,6 +1,6 @@
 @extends('admin.layout')
 @section('content')
-    <h1 class="text-2xl font-bold">Category</h1>
+    <h1 class="text-2xl font-bold">Brand</h1>
 
     {{-- Bread crumb --}}
     <nav class="my-4 flex" aria-label="Breadcrumb">
@@ -21,7 +21,7 @@
                     </svg>
                     <a href="#"
                        class="ml-1 text-sm font-medium text-gray-700 hover:text-gray-900 md:ml-2 dark:text-gray-400 dark:hover:text-white">
-                        Category
+                        Brand
                     </a>
                 </div>
             </li>
@@ -31,9 +31,9 @@
     {{-- Category list --}}
 
     <div class="mb-4 flex justify-end">
-        <a href="{{ route('colors.create') }}" type="button"
+        <a href="{{ route('brands.create') }}" type="button"
            class="text-white bg-green-800 hover:bg-green-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-green-800 dark:hover:bg-green-700 dark:focus:ring-green-700 dark:border-green-700">
-            Create Color
+            Create Brand
         </a>
     </div>
 
@@ -42,7 +42,7 @@
             <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
             <tr>
                 <th scope="col" class="py-3 px-6">
-                    Color name
+                    Brand name
                 </th>
                 <th scope="col" colspan="2" class="py-3 px-6 text-center">
                     Action
@@ -50,17 +50,17 @@
             </tr>
             </thead>
             <tbody>
-            @foreach($categories as $category)
+            @foreach($brands as $brand)
                 <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                     <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                        {{ $category->name }}
+                        {{ $brand->name }}
                     </th>
                     <td class="py-4 px-6 text-right">
-                        <a href="{{ route('colors.edit',$category->id) }}"
+                        <a href="{{ route('brands.edit',$brand->id) }}"
                            class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
                     </td>
                     <td class="py-4 px-6 text-left">
-                        <form action="{{ route('colors.destroy',$category->id) }}" method="post">
+                        <form action="{{ route('brands.destroy',$brand->id) }}" method="post">
                             @csrf
                             @method('delete')
                             <button type="submit" class="font-medium text-red-600 dark:text-red-500 hover:underline">
@@ -77,7 +77,7 @@
     </div>
 
     <div class="mt-4">
-        {{ $categories->links() }}
+        {{ $brands->links() }}
     </div>
 
 @endsection
