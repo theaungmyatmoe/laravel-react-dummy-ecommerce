@@ -21,6 +21,8 @@ return new class extends Migration {
             $table->string('image');
             $table->string('price');
             $table->text('body');
+            $table->integer('like_count')->default(0);
+            $table->integer('view_count')->default(0);
             $table->timestamps();
         });
     }

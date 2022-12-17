@@ -50,17 +50,17 @@
             </tr>
             </thead>
             <tbody>
-            @foreach($categories as $category)
+            @foreach($colors as $color)
                 <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                     <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                        {{ $category->name }}
+                        {{ $color->name }}
                     </th>
                     <td class="py-4 px-6 text-right">
-                        <a href="{{ route('categories.edit',$category->slug) }}"
+                        <a href="{{ route('colors.edit',$color->id) }}"
                            class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
                     </td>
                     <td class="py-4 px-6 text-left">
-                        <form action="{{ route('categories.destroy',$category->slug) }}" method="post">
+                        <form action="{{ route('colors.destroy',$color->id) }}" method="post">
                             @csrf
                             @method('delete')
                             <button type="submit" class="font-medium text-red-600 dark:text-red-500 hover:underline">
@@ -77,7 +77,7 @@
     </div>
 
     <div class="mt-4">
-        {{ $categories->links() }}
+        {{ $colors->links() }}
     </div>
 
 @endsection

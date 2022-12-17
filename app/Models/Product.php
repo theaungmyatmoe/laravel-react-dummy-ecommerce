@@ -11,7 +11,7 @@ class Product extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['slug', 'category_id', 'brand_id', 'name', 'image', 'price', 'body'];
+    protected $fillable = ['name', 'slug', 'category_id', 'brand_id', 'name', 'image', 'price', 'body', 'view_count', 'like_count'];
 
     public function getRouteKey(): string
     {
@@ -30,6 +30,6 @@ class Product extends Model
 
     public function colors(): BelongsToMany
     {
-        return $this->belongsToMany(Color::class, 'color_product');
+        return $this->belongsToMany(Color::class);
     }
 }
